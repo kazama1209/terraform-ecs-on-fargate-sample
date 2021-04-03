@@ -1,6 +1,6 @@
 # terraform-ecs-sample
 
-TerraformでAmazon ECS環境を作成するためのコード。
+TerraformでAmazon ECS環境（on Fargate）を作成するためのコード。
 
 ## セットアップ
 
@@ -32,13 +32,13 @@ $ terraform init
 ### ECRを作成
 
 ```
-$ $ terraform apply `cat ecr.tf | terraform fmt - | grep -E 'resource |module ' | tr -d '"' | awk '{printf("-target=%s.%s ",$2,$3);}'`
+$ terraform apply -target={aws_ecr_repository.sample_app,aws_ecr_lifecycle_policy.sample_app_lifecycle_policy,aws_ecr_repository.sample_nginx}
 ```
 
 ### RDSを作成
 
 ```
-$ terraform apply `cat rds.tf | terraform fmt - | grep -E 'resource |module ' | tr -d '"' | awk '{printf("-target=%s.%s ",$2,$3);}'`
+$ terraform apply -target={aws_db_subnet_group.sample_db_subnet_group,aws_db_instance.sample_db}
 ```
 
 ### その他リソースを一括で作成
