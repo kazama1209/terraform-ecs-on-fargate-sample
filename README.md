@@ -1,4 +1,4 @@
-# terraform-ecs-sample
+# terraform-ecs-on-fargate-sample
 
 TerraformでAmazon ECS環境（on Fargate）を作成するためのコード。
 
